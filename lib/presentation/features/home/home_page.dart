@@ -20,6 +20,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+
+
   Widget build(BuildContext context) {
     return PageContainer(
       appBar: AppBar(
@@ -34,14 +36,19 @@ class _HomePageState extends State<HomePage> {
               Navigator.pushNamed(context, "cart");
             },
             child: Container(
-              margin: EdgeInsets.only(right: 10, top: 0),
-              child: Badge(
-                badgeContent: Text('2', style: const TextStyle(color: Colors.white),),
-                child: Icon(Icons.shopping_cart_outlined),
-              ),
+              child:
+              Icon(Icons.star_border),
             ),
           ),
-
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, "cart");
+            },
+            child: Container(
+              child:
+              Icon(Icons.shopping_cart_outlined),
+            ),
+          ),
         ],
       ),
       providers: [
@@ -80,6 +87,26 @@ class _HomeContainerState extends State<HomeContainer> {
     bloc = context.read();
     bloc.eventSink.add(FetchProductEvent());
   }
+  void addToCart(String idProduct) {
+
+    if (isNotEmpty([idProduct])) {
+      bloc.eventSink.add(AddCartEvent(idProduct: idProduct));
+      showSnackBar(context, "Thêm vào giỏ hàng thành công");
+
+    } else {
+      showMessage(
+          context,
+          "Message",
+          "Lỗi không thể thêm vào giỏ hàng",
+          [
+            TextButton(onPressed: () {
+              Navigator.pop(context);
+            }, child: Text("ok"))
+          ]
+      );
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +164,9 @@ class _HomeContainerState extends State<HomeContainer> {
                       Text("Giá : ${formatPrice(product.price)} đ",
                           style: TextStyle(fontSize: 12)),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          addToCart(product.id.toString());
+                          },
                         style: ButtonStyle(
                             backgroundColor:
                             MaterialStateProperty.resolveWith((states) {
@@ -164,4 +193,5 @@ class _HomeContainerState extends State<HomeContainer> {
       ),
     );
   }
+
 }

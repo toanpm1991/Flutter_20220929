@@ -25,6 +25,17 @@ class ProductDTO {
     quantity = json['quantity'];
     gallery = json['gallery'].cast<String>();
   }
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['_id'] = id;
+    map['name'] = name;
+    map['address'] = address;
+    map['price'] = price;
+    map['img'] = img;
+    map['quantity'] = quantity;
+    map['gallery'] = gallery;
+    return map;
+  }
 
   @override
   String toString() {

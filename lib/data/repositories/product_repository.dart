@@ -28,4 +28,18 @@ class ProductRepository {
     }
     return completer.future;
   }
+  Future<AppResource<ProductDTO>> addCart(String idProduct) async{
+    Completer<AppResource<ProductDTO>> completer = Completer();
+    try {
+      Response<dynamic> response =  await _apiRequest.addCart(idProduct);
+      // TODO: Improve use Isolate
+      AppResource<ProductDTO> resourceUserDTO = AppResource.fromJson(response.data, ProductDTO.fromJson);
+      completer.complete(resourceUserDTO);
+    } on DioError catch (dioError) {
+      completer.completeError(dioError.response?.data["message"]);
+    } catch(e) {
+      completer.completeError(e.toString());
+    }
+    return completer.future;
+  }
 }

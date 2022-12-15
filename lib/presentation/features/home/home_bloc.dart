@@ -25,6 +25,9 @@ class HomeBloc extends BaseBloc {
       case FetchProductEvent:
         _executeGetProducts(event as FetchProductEvent);
         break;
+      case AddCartEvent:
+        _executeAddToCart(event as AddCartEvent);
+        break;
     }
   }
 
@@ -44,6 +47,19 @@ class HomeBloc extends BaseBloc {
       loadingSink.add(false);
     }
   }
+  void _executeAddToCart(AddCartEvent event) async{
+    loadingSink.add(true);
+    try {
+      AppResource<ProductDTO> resourceProductDTO = await _productRepository.addCart(event.idProduct);
+      if (resourceProductDTO.data == null) return;
+
+      loadingSink.add(false);
+    } catch (e) {
+      messageSink.add(e.toString());
+      loadingSink.add(false);
+    }
+  }
+
 
   @override
   void dispose() {

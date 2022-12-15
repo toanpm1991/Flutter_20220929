@@ -5,3 +5,13 @@ class FetchProductEvent extends BaseEvent {
   List<Object?> get props => [];
 
 }
+
+class AddCartEvent extends BaseEvent {
+  String idProduct;
+
+  AddCartEvent({required this.idProduct});
+
+  @override
+  List<Object?> get props => [];
+
+}

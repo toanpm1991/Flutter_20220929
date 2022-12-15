@@ -1,9 +1,12 @@
 import 'package:appp_sale_29092022/common/constants/api_constant.dart';
+import 'package:appp_sale_29092022/data/datasources/local/cache/app_cache.dart';
 import 'package:appp_sale_29092022/data/datasources/remote/dio_client.dart';
 import 'package:dio/dio.dart';
 
 class ApiRequest {
   late Dio _dio;
+
+  late String token = AppCache.getString("token");
 
   ApiRequest() {
     _dio = DioClient.instance.dio;
@@ -36,6 +39,22 @@ class ApiRequest {
     return _dio.get(ApiConstant.PRODUCTS);
   }
   Future getCart() {
-    return _dio.get(ApiConstant.GET_CART);
+    return _dio.get(ApiConstant.GET_CART,
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization":
+          "Bearer $token",
+        }));
+  }
+  Future addCart(String idProduct) {
+    return _dio.post(ApiConstant.ADD_CART,
+        data:{
+          "id_product":idProduct
+        },
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization":
+          "Bearer $token",
+        }));
   }
 }
