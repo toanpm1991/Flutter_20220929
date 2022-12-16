@@ -26,6 +26,9 @@ class CartBloc extends BaseBloc {
       case FetchCartEvent:
         _executeGetCartProducts(event as FetchCartEvent);
         break;
+      case UpdateCartEvent:
+        _executeUpdateCart(event as UpdateCartEvent);
+        break;
     }
   }
 
@@ -46,6 +49,23 @@ class CartBloc extends BaseBloc {
       _cartController.sink.add(listCart);
       loadingSink.add(false);
     } catch (e) {
+      messageSink.add(e.toString());
+      loadingSink.add(false);
+    }
+  }
+
+
+  void _executeUpdateCart(UpdateCartEvent event) async{
+    loadingSink.add(true);
+    try {
+      AppResource<CartDTO> resourceProductDTO = await _cartRepository.updateCart(event.idProduct,event.idCart, event.quantity);
+      if (resourceProductDTO.data == null) return;
+
+      progressSink.add(UpdateCartSuccessEvent());
+
+      loadingSink.add(false);
+    } catch (e) {
+      progressSink.add(UpdateCartFailEvent(message: e.toString()));
       messageSink.add(e.toString());
       loadingSink.add(false);
     }

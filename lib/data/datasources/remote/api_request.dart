@@ -57,4 +57,17 @@ class ApiRequest {
           "Bearer $token",
         }));
   }
+  Future updateCart(String idProduct, String idCard, int quantity) {
+    return _dio.post(ApiConstant.UPDATE_CART,
+        data:{
+          "id_product":idProduct,
+          "id_cart":idCard,
+          "quantity":quantity,
+        },
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization":
+          "Bearer $token",
+        }));
+  }
 }
