@@ -29,6 +29,9 @@ class CartBloc extends BaseBloc {
       case UpdateCartEvent:
         _executeUpdateCart(event as UpdateCartEvent);
         break;
+      case ConfirmCartEvent:
+        _executeConfirmCart(event as ConfirmCartEvent);
+        break;
     }
   }
 
@@ -70,7 +73,20 @@ class CartBloc extends BaseBloc {
       loadingSink.add(false);
     }
   }
+  void _executeConfirmCart(ConfirmCartEvent event) async{
+    loadingSink.add(true);
+    try {
+      AppResource<dynamic> resourceProductDTO = await _cartRepository.confirmCart(event.idCart);
 
+      progressSink.add(ConfirmCartSuccessEvent());
+
+      loadingSink.add(false);
+    } catch (e) {
+      progressSink.add(ConfirmCartFailEvent(message: e.toString()));
+      messageSink.add(e.toString());
+      loadingSink.add(false);
+    }
+  }
   @override
   void dispose() {
     super.dispose();

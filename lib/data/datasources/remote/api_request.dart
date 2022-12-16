@@ -70,4 +70,16 @@ class ApiRequest {
           "Bearer $token",
         }));
   }
+  Future confirmCart(String idCard) {
+    return _dio.post(ApiConstant.CONFIRM_CART,
+        data:{
+          "id_cart":idCard,
+          "status":"false",
+        },
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization":
+          "Bearer $token",
+        }));
+  }
 }
