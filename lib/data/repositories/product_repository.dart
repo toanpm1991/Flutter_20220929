@@ -33,8 +33,8 @@ class ProductRepository {
     try {
       Response<dynamic> response =  await _apiRequest.addCart(idProduct);
       // TODO: Improve use Isolate
-      AppResource<ProductDTO> resourceUserDTO = AppResource.fromJson(response.data, ProductDTO.fromJson);
-      completer.complete(resourceUserDTO);
+      AppResource<ProductDTO> resourceProductDTO = AppResource.fromJson(response.data, ProductDTO.fromJson);
+      completer.complete(resourceProductDTO);
     } on DioError catch (dioError) {
       completer.completeError(dioError.response?.data["message"]);
     } catch(e) {

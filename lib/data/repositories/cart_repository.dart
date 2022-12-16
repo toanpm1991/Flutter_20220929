@@ -27,4 +27,18 @@ class CartRepository {
     return completer.future;
   }
 
+  Future<AppResource<CartDTO>> updateCart(String idProduct, String idCart, int quantity) async{
+    Completer<AppResource<CartDTO>> completer = Completer();
+    try {
+      Response<dynamic> response =  await _apiRequest.updateCart(idProduct,idCart,quantity);
+      // TODO: Improve use Isolate
+      AppResource<CartDTO> resourceCartDTO = AppResource.fromJson(response.data, CartDTO.fromJson);
+      completer.complete(resourceCartDTO);
+    } on DioError catch (dioError) {
+      completer.completeError(dioError.response?.data["message"]);
+    } catch(e) {
+      completer.completeError(e.toString());
+    }
+    return completer.future;
+  }
 }
