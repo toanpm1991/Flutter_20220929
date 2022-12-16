@@ -18,15 +18,7 @@ class UpdateCartEvent extends BaseEvent {
   List<Object?> get props => [];
 
 }
-class ConfirmCartEvent extends BaseEvent {
-  String idCart;
 
-  ConfirmCartEvent({required this.idCart});
-
-  @override
-  List<Object?> get props => [];
-
-}
 
 class UpdateCartSuccessEvent extends BaseEvent {
   @override
@@ -38,22 +30,6 @@ class UpdateCartFailEvent extends BaseEvent {
   String message;
 
   UpdateCartFailEvent({required this.message});
-  @override
-  List<Object?> get props => [];
-
-}
-
-
-class ConfirmCartSuccessEvent extends BaseEvent {
-  @override
-  List<Object?> get props => [];
-
-}
-
-class ConfirmCartFailEvent extends BaseEvent {
-  String message;
-
-  ConfirmCartFailEvent({required this.message});
   @override
   List<Object?> get props => [];
 
