@@ -26,7 +26,6 @@
       <change beforePath="$PROJECT_DIR$/lib/common/constants/api_constant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/constants/api_constant.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/datasources/remote/api_request.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/datasources/remote/api_request.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/data/repositories/cart_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repositories/cart_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/data/repositories/product_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repositories/product_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/features/cart/cart_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/features/cart/cart_bloc.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/features/cart/cart_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/features/cart/cart_event.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/presentation/features/cart/cart_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/presentation/features/cart/cart_page.dart" afterDir="false" />
@@ -102,22 +101,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="883" y="401" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1669453284477" />
-    <state width="1877" height="331" key="GridCell.Tab.0.bottom" timestamp="1671080741900">
+    <state width="1877" height="474" key="GridCell.Tab.0.bottom" timestamp="1671186447078">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="331" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1671080741900" />
-    <state width="1877" height="331" key="GridCell.Tab.0.center" timestamp="1671080741900">
+    <state width="1877" height="474" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1671186447078" />
+    <state width="1877" height="474" key="GridCell.Tab.0.center" timestamp="1671186447078">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="331" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1671080741900" />
-    <state width="1877" height="331" key="GridCell.Tab.0.left" timestamp="1671080741900">
+    <state width="1877" height="474" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1671186447078" />
+    <state width="1877" height="474" key="GridCell.Tab.0.left" timestamp="1671186447074">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="331" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1671080741900" />
-    <state width="1877" height="331" key="GridCell.Tab.0.right" timestamp="1671080741900">
+    <state width="1877" height="474" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1671186447074" />
+    <state width="1877" height="474" key="GridCell.Tab.0.right" timestamp="1671186447078">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="331" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1671080741900" />
+    <state width="1877" height="474" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1671186447078" />
     <state x="461" y="170" key="SettingsEditor" timestamp="1669450754562">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

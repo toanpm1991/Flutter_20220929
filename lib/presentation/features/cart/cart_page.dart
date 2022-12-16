@@ -89,7 +89,23 @@ class _CartContainerState extends State<CartContainer> {
       );
     }
   }
+  void confirmCart(String idCart) {
+    if (isNotEmpty([idCart])) {
+      bloc.eventSink.add(ConfirmCartEvent(idCart:idCart));
 
+    } else {
+      showMessage(
+          context,
+          "Message",
+          "Lỗi không thể kết thúc giỏ hàng",
+          [
+            TextButton(onPressed: () {
+              Navigator.pop(context);
+            }, child: Text("ok"))
+          ]
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -140,8 +156,12 @@ class _CartContainerState extends State<CartContainer> {
                             ),
                             SizedBox(height: 20),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                confirmCart(snapshot.data?.id??"");
+                              },
                               style: ButtonStyle(
+                                  padding: MaterialStateProperty.all<EdgeInsets>(
+                                      EdgeInsets.fromLTRB(110,15,110,15)),
                                   backgroundColor:
                                   MaterialStateProperty.resolveWith((states) {
                                     if (states.contains(
@@ -209,6 +229,14 @@ class _CartContainerState extends State<CartContainer> {
                 case UpdateCartFailEvent:
                   showSnackBar(context, (event as UpdateCartFailEvent).message);
                   break;
+
+                case ConfirmCartSuccessEvent:
+                  showSnackBar(context, "Tạo đơn hàng thành công");
+                  Navigator.pushReplacementNamed(context, "home");
+                  break;
+                case ConfirmCartFailEvent:
+                  showSnackBar(context, (event as ConfirmCartFailEvent).message);
+                  break;
               }
             },
           )
@@ -275,24 +303,6 @@ class _CartContainerState extends State<CartContainer> {
                       ),
                       Text("Thành tiền : ${formatPrice((product.quantity??0) * (product.price??0))}",
                           style: TextStyle(fontSize: 14)),
-                      // ElevatedButton(
-                      //   onPressed: () {},
-                      //   style: ButtonStyle(
-                      //       backgroundColor:
-                      //       MaterialStateProperty.resolveWith((states) {
-                      //         if (states.contains(MaterialState.pressed)) {
-                      //           return Color.fromARGB(200, 240, 102, 61);
-                      //         } else {
-                      //           return Color.fromARGB(230, 240, 102, 61);
-                      //         }
-                      //       }),
-                      //       shape: MaterialStateProperty.all(
-                      //           RoundedRectangleBorder(
-                      //               borderRadius: BorderRadius.all(
-                      //                   Radius.circular(10))))),
-                      //   child:
-                      //   Text("Thêm vào giỏ", style: TextStyle(fontSize: 14)),
-                      // ),
                     ],
                   ),
                 ),

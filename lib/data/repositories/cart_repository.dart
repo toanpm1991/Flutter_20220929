@@ -41,4 +41,18 @@ class CartRepository {
     }
     return completer.future;
   }
+
+  Future confirmCart(String idCart) async{
+    Completer completer = Completer();
+    try {
+      Response<dynamic> response =  await _apiRequest.confirmCart(idCart);
+      // TODO: Improve use Isolate
+      completer.complete(AppResource<dynamic>());
+    } on DioError catch (dioError) {
+      completer.completeError(dioError.response?.data["message"]);
+    } catch(e) {
+      completer.completeError(e.toString());
+    }
+    return completer.future;
+  }
 }
