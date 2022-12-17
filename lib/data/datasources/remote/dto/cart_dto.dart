@@ -5,7 +5,8 @@ class CartDTO {
     this.id,
     this.products,
     this.idUser,
-    this.price
+    this.price,
+    this.date_created
   });
 
   CartDTO.fromJson(dynamic json) {
@@ -18,12 +19,14 @@ class CartDTO {
     }
     idUser = json['id_user'];
     price = json['price'];
+    date_created = json['date_created'];
   }
 
   String? id;
   List<ProductDTO>? products;
   String? idUser;
   num? price;
+  String? date_created;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -33,6 +36,7 @@ class CartDTO {
     }
     map['id_user'] = idUser;
     map['price'] = price;
+    map['date_created'] = date_created;
     return map;
   }
 

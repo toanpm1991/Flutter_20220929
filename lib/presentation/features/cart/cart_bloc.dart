@@ -47,7 +47,8 @@ class CartBloc extends BaseBloc {
             return Product(dto.id, dto.name, dto.address, dto.price, dto.img, dto.quantity, dto.gallery);
           }).toList(),
           cartDTO.idUser,
-          cartDTO.price
+          cartDTO.price,
+          cartDTO.date_created
       );
       _cartController.sink.add(listCart);
       loadingSink.add(false);
