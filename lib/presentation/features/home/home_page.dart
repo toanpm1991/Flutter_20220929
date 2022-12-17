@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, "cart");
+              Navigator.pushNamed(context, "order");
             },
             child: Container(
               child:

@@ -82,4 +82,13 @@ class ApiRequest {
           "Bearer $token",
         }));
   }
+
+  Future getOrder() {
+    return _dio.post(ApiConstant.ORDER_HISTORY,
+        options: Options(headers: {
+          "Content-Type": "application/json",
+          "Authorization":
+          "Bearer $token",
+        }));
+  }
 }

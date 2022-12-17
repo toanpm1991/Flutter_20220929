@@ -231,8 +231,16 @@ class _CartContainerState extends State<CartContainer> {
                   break;
 
                 case ConfirmCartSuccessEvent:
-                  showSnackBar(context, "Tạo đơn hàng thành công");
-                  Navigator.pushReplacementNamed(context, "home");
+                  showMessage(
+                      context,
+                      "Message",
+                      "Tạo đơn hàng thành công",
+                      [
+                        TextButton(onPressed: () {
+                          Navigator.pushReplacementNamed(context, "home");
+                        }, child: Text("ok"))
+                      ]
+                  );
                   break;
                 case ConfirmCartFailEvent:
                   showSnackBar(context, (event as ConfirmCartFailEvent).message);
