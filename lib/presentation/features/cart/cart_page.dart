@@ -237,7 +237,7 @@ class _CartContainerState extends State<CartContainer> {
                       "Tạo đơn hàng thành công",
                       [
                         TextButton(onPressed: () {
-                          Navigator.pushReplacementNamed(context, "home");
+                          Navigator.pushReplacementNamed(context, "order");
                         }, child: Text("ok"))
                       ]
                   );
@@ -264,7 +264,7 @@ class _CartContainerState extends State<CartContainer> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(5),
-                child: Image.network(ApiConstant.BASE_URL + (product.img??""),
+                child: Image.network(ApiConstant.BASE_URL + (product.img),
                     width: 150, height: 120, fit: BoxFit.fill),
               ),
               Expanded(
@@ -281,11 +281,11 @@ class _CartContainerState extends State<CartContainer> {
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(fontSize: 16)),
                       ),
-                      Text("Giá : ${formatPrice(product.price??0)} đ",
+                      Text("Giá : ${formatPrice(product.price)} đ",
                           style: TextStyle(fontSize: 14)),
                       Row(
                         children:[
-                          Text("Số lượng : ${formatPrice(product.quantity??0)}    ",
+                          Text("Số lượng : ${formatPrice(product.quantity)}    ",
                             style: TextStyle(fontSize: 14)),
                           ElevatedButton(
                             onPressed: () {
@@ -309,7 +309,7 @@ class _CartContainerState extends State<CartContainer> {
                           ),
                         ] ,
                       ),
-                      Text("Thành tiền : ${formatPrice((product.quantity??0) * (product.price??0))}",
+                      Text("Thành tiền : ${formatPrice((product.quantity) * (product.price))}",
                           style: TextStyle(fontSize: 14)),
                     ],
                   ),

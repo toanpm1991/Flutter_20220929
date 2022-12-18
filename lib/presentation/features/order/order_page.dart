@@ -6,6 +6,7 @@ import 'package:appp_sale_29092022/data/model/cart.dart';
 import 'package:appp_sale_29092022/data/repositories/order_repository.dart';
 import 'package:appp_sale_29092022/presentation/features/order/order_bloc.dart';
 import 'package:appp_sale_29092022/presentation/features/order/order_event.dart';
+import 'package:appp_sale_29092022/presentation/features/order/orderdetail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -107,8 +108,8 @@ class _OrderContainerState extends State<OrderContainer> {
                 child: Padding(
                     padding: const EdgeInsets.only(left: 5,right: 10),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,6 +123,12 @@ class _OrderContainerState extends State<OrderContainer> {
                           ),
                           ElevatedButton(
                             onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OrderDetailPage(cart: cart),
+                                ),
+                              );
                             },
                             style: ButtonStyle(
                                 backgroundColor:
